@@ -16,7 +16,42 @@ namespace EventsApi.Models.Repository
         //Constructor
         public UserCollection()
         {
-            Collection = _repo.Db.GetCollection<User>("users");
+            Collection = _repo.Db.GetCollection<User>("user");
+        }
+
+        public string SaveNewUser(string userName, string password)
+        {
+            try
+            {
+                User user = new User();
+                user._id = ObjectId.GenerateNewId();
+                user.userName = userName;
+                user.password = password;
+                user.id = 0;
+                user.firstName = "";
+                user.lastName = "";
+                this.Collection.InsertOneAsync(user);
+                return "Success";
+            }
+            catch (Exception e)
+            {
+
+                return e.Message;
+            }
+        }
+
+        public string loginUser(string userName, string password)
+        {
+            try
+            {
+              User user = this.Collection.Find(new BsonDocument { { "userName", userName } , { "password", password} }).FirstAsync().Result;
+                return "Success";
+            }
+            catch (Exception e)
+            {
+
+                return e.Message;
+            }
         }
 
     }

@@ -30,7 +30,7 @@ namespace EventsApi.Models.Repository
             }
             catch (Exception e)
             {
-                return e.Message;
+                throw new Exception(e.Message);
             }
         }
         public string DeleteVoter(int eventid, int SessionId, string VoterName)
@@ -44,7 +44,7 @@ namespace EventsApi.Models.Repository
             }
             catch (Exception e)
             {
-             return e.Message;
+                throw new Exception(e.Message);
             }
         }
 

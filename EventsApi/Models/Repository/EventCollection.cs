@@ -34,8 +34,14 @@ namespace EventsApi.Models.Repository
         {
             try
             {
-                tempEvent._id = ObjectId.GenerateNewId();
-                this.Collection.InsertOneAsync(tempEvent);
+                if(this.Collection.Find(new BsonDocument { { "id", tempEvent.id } }).CountDocuments() > 0)
+                {
+                    this.Collection.FindOneAndUpdateAsync(Builders<Event>.Filter.Eq("id", tempEvent.id), Builders<Event>.Update.Set("sessions", tempEvent.sessions));
+                } else
+                {
+                    tempEvent._id = ObjectId.GenerateNewId();
+                    this.Collection.InsertOneAsync(tempEvent);
+                }
                 return "Success";
             }
             catch (Exception)
