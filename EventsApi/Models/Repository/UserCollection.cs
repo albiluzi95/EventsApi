@@ -40,17 +40,16 @@ namespace EventsApi.Models.Repository
             }
         }
 
-        public string loginUser(string userName, string password)
+        public User loginUser(string userName, string password)
         {
             try
             {
               User user = this.Collection.Find(new BsonDocument { { "userName", userName } , { "password", password} }).FirstAsync().Result;
-                return "Success";
+                return user;
             }
             catch (Exception e)
             {
-
-                return e.Message;
+                throw new Exception("Insert All the inputs");
             }
         }
 

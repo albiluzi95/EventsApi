@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace EventsApi.Controllers
 {
-    [Route("user")]
+    
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class UserController : ApiController
     {
@@ -18,13 +18,12 @@ namespace EventsApi.Controllers
         private UserCollection _user = new UserCollection();
 
         [HttpPost]
-        public string addvoter([FromBody] dynamic loginInfo)
+        [Route("user/login")]
+        public User login(string username, string password)
         {
             try
             {
-            string userName = loginInfo["username"];
-            string password = loginInfo["password"];
-            return _user.loginUser(userName, password);
+            return _user.loginUser(username, password);
             }
             catch (Exception e) {
                 throw new Exception("Insert All the inputs");
@@ -32,6 +31,7 @@ namespace EventsApi.Controllers
         }
 
         [HttpPut]
+        [Route("user")]
         public string updateCurrentUser([FromBody] User currentUser)
         {
             try
