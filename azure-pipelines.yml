@@ -16,4 +16,13 @@ steps:
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      (Get-Item -Path ".\" -Verbose).FullName  
+      $env:Path=[System.Environment]::GetEnvironmentVariable("Path","Machine")+";"+  
+      [System.Environment]::GetEnvironmentVariable("Path","User")  
+      Get-Command -CommandType Application -ErrorAction SilentlyContinue -Name webpack | Select-Object -ExpandProperty Definition | echo
+    failOnStderr: true
   displayName: 'Run a multi-line script'
