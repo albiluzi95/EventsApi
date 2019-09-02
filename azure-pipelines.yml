@@ -32,10 +32,3 @@ steps:
   inputs:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
-    #Your build pipeline references an undefined variable named ‘Parameters.WebsiteName’. Create or edit the build pipeline for this YAML file, define the variable on the Variables tab. See https://go.microsoft.com/fwlink/?linkid=865972
-- task: IISWebAppDeploymentOnMachineGroup@0
-  displayName: 'IIS Web App Deploy'
-  inputs:
-    WebSiteName: '$(Parameters.WebsiteName)'
-    TakeAppOfflineFlag: true
-    XmlVariableSubstitution: True
