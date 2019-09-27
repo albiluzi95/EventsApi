@@ -33,10 +33,12 @@ Pasë kësaj duhet të ndiqen një sere procedurash ku fillimisht tregojmë azur
  
 Në rastin tonë ne zgjedhim  Team Foundation Version Control. Pas kësaj zgjedhim llojin e source si më poshtë 
 ![Select Repository](https://github.com/albiluzi95/EventsApi/blob/master/images/selectRepository.PNG)
+
 Pasë kësaj na duhet qe të krijojmë pipeline tonë. Azure në këtë llojë rasti ka nje ndërfaqe mjaft solide ku mund të zgjedhim një llojë 
 ‘templeate’ të gatshëm për krijimin e filet të konfigurmit, por për aplikacione më komplekse ky llojë ‘templeate’ ndahet në disa 
 agjentë të cilat shtohen njëri pasë tjetrit duke ruajtur nivelin hiearkik që kanë veprimet.
  ![Selct a templeate](https://github.com/albiluzi95/EventsApi/blob/master/images/vsts-template-selection.png)
+
 Pasë kësaj neve do na jepet një sere veprimesh “agents” të cilat të grupuara cilësohen si një “job” e cila përfunimisht do na krijojë 
 një file azure-pipeline.yml bashkë me setin e te dhënave.
  
@@ -76,17 +78,17 @@ steps:
 - task: PublishBuildArtifacts@1
  ```
 ## Krijimi i pipeline-it për prodhim
-	Në faqen ku jemi hapim pjesën e ‘Releases’ dhe shtojmë një pipelinë të ri për atë release.
+Në faqen ku jemi hapim pjesën e ‘Releases’ dhe shtojmë një pipelinë të ri për atë release.
 ![Create new release Pipeline](https://github.com/albiluzi95/EventsApi/blob/master/images/addNewReleasePipeline.PNG)
  
 Azure DevOps ka ofruar shumë templeate shabllone të paracaktuara për vendosjen. Disa prej tyre janë si më poshtë
-a)	Vendosja e Shërbimit të Azure me Test ose pa Test
-b)	Vendosja e Shërbimit të Azure Aplikimit me monitorim të vazhdueshëm
-c)	Shërbime Cloud për deployment
-d)	Deployment on-Premise
-e)	Set shkallë azure VM
-f)	Vendosja e politikave të azurit
-g)	Funksioni App për Azure
+*	Vendosja e Shërbimit të Azure me Test ose pa Test
+*	Vendosja e Shërbimit të Azure Aplikimit me monitorim të vazhdueshëm
+*	Shërbime Cloud për deployment
+*	Deployment on-Premise
+*	Set shkallë azure VM
+*	Vendosja e politikave të azurit
+*	Funksioni App për Azure
 
 Tani mund te krijojme templeate-in tonë sipas figurës së mëposhtëme:
  ![Create new release Templeate](https://github.com/albiluzi95/EventsApi/blob/master/images/newReleaseTempleate.PNG)
@@ -97,7 +99,7 @@ kontrollin e versionit nëse dëshironi. Ne shikoojmë që ekzistojnë të gjith
 tuaja. Kështu për shembull, një Gradle build ose Go build, ose doni të bëni disa testime të ngarkesës, ose dëshironi të bëni një 
 aplikacion Xamarin për iOS, Ant ndërton, ju e emëroni atë; është gjithçka dhe pjesë e përvojës së jashtme. Azure DevOps ka gjëra të 
 tilla si Rivendosja NuGet, Asambletë Test, Ndërtoni zgjidhjen, të gjitha llojet e gjërave që mund të marrim nga zgjedhësi i detyrave.
- ![Create new release Templeate](https://github.com/albiluzi95/EventsApi/images/blob/master/newReleaseTempleate2.PNG)
+ ![Create new release Templeate](https://github.com/albiluzi95/EventsApi/blob/master/images/newReleaseTempleate2.PNG)
 
  
 Ne mund të mundësojmë miratimet e para-vendosjes siç tregohet më poshtë. Tani, çfarë ndodh kur bëra një vendosje dhe dislokimi dështoi?
